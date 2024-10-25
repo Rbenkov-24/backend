@@ -1,11 +1,23 @@
-import express from 'express'
+import express from "express";
+import dotenv from "dotenv";
+import { connectDB } from "./config/dbConn.js";
 
+//load environment variable from .env file
+dotenv.config();
+
+//create an express application
 const app = express();
-const PORT = 4000;
 
+//define PORT variable from envirnemnt variables, default tp 4000
+const PORT= process.env.PORT || 4000;
 
-app.get("/", (req,res)=>{
-    res.send(`Hello Ramy, your server is ready!`)
-})
+//route for the root URL
+app.get("/", (req, res) => {
+  res.send(`Hello Ramy, your server is ready!`);
+});
 
-app.listen(PORT, () => console.log(`server is running on port:${PORT}`))
+//connect to database and start the server
+connectDB();
+app.listen(PORT, () => {
+  console.log(`server is running on port:${PORT}`);
+});
