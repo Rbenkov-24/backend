@@ -21,8 +21,9 @@ const adminLoginSchema = new mongoose.Schema(
     },
   },
   { timestamps: true }
-); //enable timestamps to automatically manage 'createdAt' and 'updatedAt' fields.
+); //enable timestamps to automatically manage 'createdAt' and 'updatedAt' fields
 
 //create a model for the admin login
 const AdminLogin = mongoose.model("AdminLogin", adminLoginSchema);
-export default AdminLogin; //export the model for use in other files
+//export the model for use in other files
+export default AdminLogin; 
