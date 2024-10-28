@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { connectDB } from "./config/dbConn.js";
+import contributorRouter from './routes/contributors.js';
 
 
 // Load environment variable from .env file
@@ -20,8 +21,9 @@ app.use(express.json());
 app.use(cors()); // Allow CORS for all routes
 
 
-// Use my routes prefixed with /api
-app.use();
+
+// Use the contributors route prefixed with /api
+app.use('/api/contributors', contributorRouter);
 
 
 // Error handling middleware
