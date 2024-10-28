@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { connectDB } from "./config/dbConn.js";
 import contributorRouter from './routes/contributors.js';
+import youtubeRouter from './routes/youtube.js';
 
 
 // Load environment variable from .env file
@@ -18,12 +19,11 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 
 // Enable CORS
-app.use(cors()); // Allow CORS for all routes
-
-
+app.use(cors());
 
 // Use the contributors route prefixed with /api
 app.use('/api/contributors', contributorRouter);
+app.use('/api/youtube', youtubeRouter);
 
 
 // Error handling middleware
