@@ -1,13 +1,17 @@
+//backend/server.js
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { connectDB } from "./config/dbConn.js";
 import contributorRouter from './routes/contributors.js';
 import youtubeRouter from './routes/youtube.js';
+import loginRouter from './routes/login.js';
+import session from "express-session";
 
 
 // Load environment variable from .env file
 dotenv.config();
+
 
 // Create an Express application
 const app = express();
@@ -21,9 +25,18 @@ app.use(express.json());
 // Enable CORS
 app.use(cors());
 
+// Configure and use express-session
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'your_default_secret', // Use an environment variable for the secret
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Set to true in production if using HTTPS
+}));
+
 // Use the contributors route prefixed with /api
 app.use('/api/contributors', contributorRouter);
 app.use('/api/youtube', youtubeRouter);
+app.use('/api/login', loginRouter);
 
 
 // Error handling middleware
