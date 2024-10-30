@@ -32,7 +32,14 @@ const courseContentSchema = new mongoose.Schema(
   { timestamps: true } // Enable timestamps to automatically manage 'createdAt' and 'updatedAt' fields
 );
 
+// Indexes
+courseContentSchema.index({ title: 1 });
+courseContentSchema.index({ instructorName: 1 });
+courseContentSchema.index({ "video.videoId": 1 });
+courseContentSchema.index({ instructorName: 1, title: 1 }); // Compound index for searching by instructor and title
+
 // Create a model for the course content
 const CourseContent = mongoose.model("CourseContent", courseContentSchema, "courseContent");
+
 // Export the model for use in other files
 export default CourseContent;

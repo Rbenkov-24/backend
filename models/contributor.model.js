@@ -27,10 +27,18 @@ export const contributorSchema = new mongoose.Schema(
       default: true,
     },
   },
-  { timestamps: true }
-); // Enable timestamps to automatically manage 'createdAt' and 'updatedAt' fields.
+  { timestamps: true }// Enable timestamps to automatically manage 'createdAt' and 'updatedAt' fields.
+
+  
+); 
+
+// Indexes
+contributorSchema.index({ name: 1 });
+contributorSchema.index({ jobTitle: 1 });
+contributorSchema.index({ isActive: 1 });
+contributorSchema.index({ isActive: 1, name: 1 }); // Compound index for active contributors by name
 
 // Create a model for contributors
-const Contributor = mongoose.model("Contributor", contributorSchema);
+const Contributor = mongoose.model("Contributor", contributorSchema, "contributors");
 
 export default Contributor; // Export the model for use in other files

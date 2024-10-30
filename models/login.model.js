@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 // Schema for admin login
-const adminLoginSchema = new mongoose.Schema(
+const loginSchema = new mongoose.Schema(
   {
     userName: {
       type: String,
@@ -14,16 +14,29 @@ const adminLoginSchema = new mongoose.Schema(
       required: true,
       minlength: 6,
     },
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    picture: {
+      type: String,
+      required: true,             
+    },
     isActive: {
       // To check whether the admin account is still active (still has access)
       type: Boolean,
       default: true,
     },
   },
-  { timestamps: true }
-); // Enable timestamps to automatically manage 'createdAt' and 'updatedAt' fields
+  { timestamps: true } // Enable timestamps to automatically manage 'createdAt' and 'updatedAt' fields
+); 
+
+// Index to optimize queries by userName and isActive
+loginSchema.index({ userName: 1, isActive: 1 }); // Compound index
 
 // Create a model for the admin login
-const AdminLogin = mongoose.model("AdminLogin", adminLoginSchema);
+const Login = mongoose.model("Login", loginSchema, "adminLogin");
+
 // Export the model for use in other files
-export default AdminLogin; 
+export default Login;
