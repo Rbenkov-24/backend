@@ -1,4 +1,3 @@
-//backend/server.js
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
@@ -7,6 +6,7 @@ import contributorRouter from './routes/contributors.js';
 import youtubeRouter from './routes/youtube.js';
 import loginRouter from './routes/login.js';
 import session from "express-session";
+import studentRouter from './routes/students.js';
 
 
 // Load environment variable from .env file
@@ -23,11 +23,14 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 
 // Enable CORS
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173', // my frontend URL
+  credentials: true // Allow credentials
+}));
 
 // Configure and use express-session
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'your_default_secret', // Use an environment variable for the secret
+  secret: process.env.SESSION_SECRET || 'skillstream2024',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false } // Set to true in production if using HTTPS
@@ -37,6 +40,7 @@ app.use(session({
 app.use('/api/contributors', contributorRouter);
 app.use('/api/youtube', youtubeRouter);
 app.use('/api/login', loginRouter);
+app.use('/api/students', studentRouter);
 
 
 // Error handling middleware
