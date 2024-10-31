@@ -7,6 +7,7 @@ import youtubeRouter from './routes/youtube.js';
 import loginRouter from './routes/login.js';
 import session from "express-session";
 import studentRouter from './routes/students.js';
+import logoutRouter from './routes/logout.js';
 
 
 // Load environment variable from .env file
@@ -41,6 +42,7 @@ app.use('/api/contributors', contributorRouter);
 app.use('/api/youtube', youtubeRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/students', studentRouter);
+app.use('/api/logout', logoutRouter);
 
 
 // Error handling middleware
