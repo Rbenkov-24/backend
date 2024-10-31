@@ -17,7 +17,7 @@ const loginSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
-      trim: true,
+      trim: true, // Remove extra spaces
     },
     picture: {
       type: String,
