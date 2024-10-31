@@ -48,6 +48,9 @@ This is the backend server for the SkillStream project, a platform for online le
 - [Add YouTube functionality to your app](https://developers.google.com/youtube/v3)
 - [YouTube Data API Tutorial - Search for Videos](https://www.youtube.com/watch?app=desktop&v=QY8dhl1EQfI)
 - [Register and Login Tutorial | ReactJS, NodeJS, MySQL - Cookies, Sessions, Hashing](https://www.youtube.com/watch?v=sTHWNPVNvm8&t=381s)
+- [Cookie and Session (II): How session works in express-session](https://medium.com/@alysachan830/cookie-and-session-ii-how-session-works-in-express-session-7e08d102deb8)
+- [Session Secret Value Error](https://forum.freecodecamp.org/t/session-secret-value-error/457249)
+- [Learn w/ Leon & Friends] (Discord Channel)
 
 ## Thanks
 
